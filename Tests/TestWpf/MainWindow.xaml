@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="292" Width="424">
     <Grid>
+        <Button Content="Отправить" Margin="143,153,0,0" Height="54" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Left" Width="101"/>
+        <TextBox Name="Login" Margin="126,34,0,0" Text="User name" HorizontalAlignment="Left" Width="209" Height="21" VerticalAlignment="Top"/>
+        <PasswordBox Name="Password" HorizontalAlignment="Left" Margin="127,62,0,0" VerticalAlignment="Top" Width="208" Height="22"/>
+        <Label Content="Имя пользователя" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="66,60,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
