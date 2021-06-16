@@ -15,12 +15,12 @@ namespace TestWpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using var massege = new MailMessage("irinasamylovskaya@mail.ru", "irinasamylovskaya@mail.ru"); //сообщение от кого и кому
+            using var massege = new MailMessage(WpfTestMailSender.fromLetter, WpfTestMailSender.toLetter); //сообщение от кого и кому
             massege.Subject = "Какой-то текст";
             massege.Body = "Всё ещё какое-то сообщение. \nДата и время отправки: " + DateTime.Now.ToString("dd.mm.yy hh:mm");
 
             //порты для ьфшд 25, 587 или 2525
-            using var client = new SmtpClient("smtp.mail.ru", 25); //для клиента указываем адрес сервера и порт
+            using var client = new SmtpClient(WpfTestMailSender.smtpAdress, WpfTestMailSender.host); //для клиента указываем адрес сервера и порт
 
             client.EnableSsl = true;
             client.Credentials = new NetworkCredential
