@@ -6,9 +6,6 @@ using System.Windows;
 
 namespace TestWpf
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -37,9 +34,9 @@ namespace TestWpf
                 client.Send(massege);
                 MessageBox.Show("Почта успешно отправлена", "Сообщение об отправке", MessageBoxButton.OK);
             }
-            catch (SmtpException smtp_exception) 
+            catch (SmtpException) 
             {
-                MessageBox.Show(smtp_exception.Message, "Ошибка отправки!", MessageBoxButton.OK);
+                MessageBox.Show("Что-то введено неверно:(\nПожалуйста, попробуйте снова", "Ошибка отправки!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
