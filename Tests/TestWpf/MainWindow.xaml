@@ -12,6 +12,12 @@
         <PasswordBox Name="Password" HorizontalAlignment="Left" Margin="127,62,0,0" VerticalAlignment="Top" Width="208" Height="22"/>
         <Label Content="Имя пользователя" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="66,60,0,0" VerticalAlignment="Top"/>
-
     </Grid>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
 </Window>

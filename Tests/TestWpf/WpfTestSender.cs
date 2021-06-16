@@ -31,11 +31,15 @@ namespace TestWpf
             try
             {
                 client.Send(massege);
-                MessageBox.Show("Почта успешно отправлена", "Сообщение об отправке", MessageBoxButton.OK);
+                SendSuccessWindow success = new SendSuccessWindow();
+                success.Show();
+                //MessageBox.Show("Почта успешно отправлена", "Сообщение об отправке", MessageBoxButton.OK);
             }
             catch (SmtpException)
             {
-                MessageBox.Show("Что-то введено неверно:(\nПожалуйста, попробуйте снова", "Ошибка отправки!", MessageBoxButton.OK, MessageBoxImage.Error);
+                SendErrorWindow error = new SendErrorWindow();
+                error.Show();
+                //MessageBox.Show("Что-то введено неверно:(\nПожалуйста, попробуйте снова", "Ошибка отправки!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
