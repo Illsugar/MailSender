@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestWpf
 {
-    public static class WpfTestMailSender
+    public static class WpfTestSrc
     {
         public static string smtpAdress = "smtp.mail.ru";
         public static int host = 25;
