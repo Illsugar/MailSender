@@ -10,22 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MailSender
+namespace TestWpf
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для SendSuccessWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SendSuccessWindow : Window
     {
-        public MainWindow()
+        public SendSuccessWindow()
         {
             InitializeComponent();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        private void Success_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
