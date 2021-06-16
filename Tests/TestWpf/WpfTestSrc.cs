@@ -8,11 +8,34 @@ namespace TestWpf
 {
     public static class WpfTestSrc
     {
-        public static string smtpAdress = "smtp.mail.ru";
-        public static int host = 25;
-        public static string fromLetter = "irinasamylovskaya@mail.ru";
-        public static string toLetter = "irinasamylovskaya@mail.ru";
+        private static string smtpAdress = "smtp.mail.ru";
+        private static int host = 25;
+        private static string fromLetter = "irinasamylovskaya@mail.ru";
+        private static string toLetter = "irinasamylovskaya@mail.ru";
 
+        public static string SmtpAdress
+        {
+            get { return smtpAdress; }
+            set { smtpAdress = value; }
+        }
+
+        public static int Host
+        {
+            get { return host; }
+            set { host = value; }
+        }
+
+        public static string FromLetter
+        {
+            get { return fromLetter; }
+            set { fromLetter = value; }
+        }
+
+        public static string ToLetter 
+        {
+            get { return toLetter; }
+            set { toLetter = value; }
+        }
 
     }
 }
