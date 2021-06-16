@@ -11,12 +11,12 @@ namespace TestWpf
 {
     public class WpfTestSender
     {
-        public static void TestSender(string login, System.Security.SecureString pass)
+        public static void TestSender(string login, System.Security.SecureString pass, string subject, string body)
         {
             
             using var massege = new MailMessage(WpfTestSrc.FromLetter, WpfTestSrc.ToLetter); //сообщение от кого и кому
-            massege.Subject = "Какой-то текст";
-            massege.Body = "Всё ещё какое-то сообщение. \nДата и время отправки: " + DateTime.Now.ToString("dd.mm.yy hh:mm");
+            massege.Subject = subject;
+            massege.Body = body + "\nДата и время отправки: " + DateTime.Now.ToString("dd.mm.yy hh:mm");
 
             //порты для ьфшд 25, 587 или 2525
             using var client = new SmtpClient(WpfTestSrc.SmtpAdress, WpfTestSrc.Host); //для клиента указываем адрес сервера и порт

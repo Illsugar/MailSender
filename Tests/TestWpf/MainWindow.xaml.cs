@@ -15,10 +15,12 @@ namespace TestWpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var login = Login.Text;
+            string login = Login.Text;
             var pass = Password.SecurePassword;
+            string subject = SubjectLetter.Text;
+            string body = BodyLetter.Text;
 
-            WpfTestSender.TestSender(login, pass);
+            WpfTestSender.TestSender(login, pass, subject, body);
         }
     }
 }

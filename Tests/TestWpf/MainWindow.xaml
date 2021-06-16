@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="292" Width="424">
+        Title="MainWindow" Height="370" Width="572">
     <Grid>
-        <Button Content="Отправить" Margin="162,178,162,0" Height="34" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox Name="Login" Margin="126,34,0,0" Text="User name" HorizontalAlignment="Left" Width="209" Height="21" VerticalAlignment="Top"/>
-        <PasswordBox Name="Password" HorizontalAlignment="Left" Margin="127,62,0,0" VerticalAlignment="Top" Width="208" Height="22"/>
-        <Label Content="Имя пользователя" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>
-        <Label Content="Пароль" HorizontalAlignment="Left" Margin="66,60,0,0" VerticalAlignment="Top"/>
+        <Button Content="Отправить" Margin="202,277,202,0" Height="34" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox Name="Login" Margin="126,15,0,0" HorizontalAlignment="Left" Width="209" Height="21" VerticalAlignment="Top"/>
+        <PasswordBox Name="Password" HorizontalAlignment="Left" Margin="126,41,0,0" VerticalAlignment="Top" Width="208" Height="22"/>
+        <Label Content="Имя пользователя" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="66,37,0,0" VerticalAlignment="Top"/>
+        <Label Content="Тема письма" Margin="37,65,0,0" HorizontalAlignment="Left" Width="89" Height="27" VerticalAlignment="Top"/>
+        <TextBox x:Name="SubjectLetter" Margin="126,68,0,0" HorizontalAlignment="Left" Width="415" Height="21" VerticalAlignment="Top"/>
+        <Label Content="Текст письма" Margin="27,107,0,0" HorizontalAlignment="Left" Width="84" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="BodyLetter" Margin="27,138,27,0" Height="97" VerticalAlignment="Top"/>
     </Grid>
     <Window.Resources>
         <ResourceDictionary>
