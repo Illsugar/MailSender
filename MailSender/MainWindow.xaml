@@ -11,10 +11,21 @@
             <MenuItem Header="Файл">
                 <MenuItem Header="Выход" Click="Exit_Click"/>
             </MenuItem>
+            <MenuItem Header="Справка">
+                <MenuItem Header="О программе"/>
+            </MenuItem>
         </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Right">
+                <ResizeGrip/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="Статус:"/>
+            </StatusBarItem>
+        </StatusBar>
         <TabControl>
-            <TabItem Header="Список рассылки"></TabItem>
-            <TabItem Header="Сервера"></TabItem>
+            <TabItem Header="Списки расслыки"></TabItem>
+            <TabItem Header="Расписание"></TabItem>
             <TabItem Header="Письма"></TabItem>
             <TabItem Header="Статистика"></TabItem>
         </TabControl>
