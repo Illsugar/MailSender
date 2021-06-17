@@ -39,5 +39,13 @@ namespace MailSender.Data
                 Discription = $"Описание получателя {i}"
             })
             .ToList();
+
+        public static List<Letter> Letters { get; } = Enumerable.Range(1, 100)
+            .Select(i => new Letter
+            {
+                Title = $"Тема письма {i}",
+                Body = $"Какое-то письмо - {i}"
+            })
+            .ToList();
     }
 }
