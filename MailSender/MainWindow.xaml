@@ -6,7 +6,7 @@
         xmlns:im="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
-        xmlns:models="clr-namespace:MailSender.Models"
+        xmlns:models="clr-namespace:MailSender.Models;assembly=MailSender.lib"
         mc:Ignorable="d"
         Title="Рассыльщик почты" Height="450" Width="800">
     <DockPanel>
