@@ -63,6 +63,14 @@
                             <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
                         </ToolBar>
                     </ToolBarTray>
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" MinWidth="45" MaxWidth="80"/>
+                            <DataGridTextColumn Header="Имя" MinWidth="150"/>
+                            <DataGridTextColumn Header="Адрес" MinWidth="150"/>
+                            <DataGridTextColumn Header="Описание" MinWidth="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Расписание"></TabItem>
