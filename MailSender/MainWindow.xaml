@@ -37,7 +37,6 @@
                         <ToolBar>
                             <Label Content="Сервера:" Margin="0,0,25,0"/>
                             <ComboBox Width="100" SelectedIndex="0" Name="ServersList" ItemsSource="{x:Static data:TestData.Servers}" DisplayMemberPath="Name">
-                                
                             </ComboBox>
                             <Button ToolTip="Добавить" im:Awesome.Content="Solid_Plus" Foreground="#FF7E98DE"/>
                             <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="#FF7E98DE"/>
@@ -45,10 +44,15 @@
                         </ToolBar>
                         <ToolBar Band="1" BandIndex="0">
                             <Label Content="Отправители:"/>
-                            <ComboBox Width="100" SelectedIndex="0">
-                                <ComboBoxItem Content="Отправитель 1"/>
-                                <ComboBoxItem Content="Отправитель 2"/>
-                                <ComboBoxItem Content="Отправитель 3"/>
+                            <ComboBox Width="100" SelectedIndex="0" Name="SenderList" ItemsSource="{x:Static data:TestData.Senders}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type models:Sender}">
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding Address}" Opacity="0.6"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
                             </ComboBox>
                             <Button ToolTip="Добавить" im:Awesome.Content="Solid_Plus" Foreground="#FF7E98DE"/>
                             <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="#FF7E98DE"/>
@@ -63,12 +67,12 @@
                             <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
                         </ToolBar>
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False">
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{x:Static data:TestData.Recipients}" VerticalGridLinesBrush="#FFE0E3BC" HorizontalGridLinesBrush="#FFE0E3BC" CanUserAddRows="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" MinWidth="45" MaxWidth="80"/>
-                            <DataGridTextColumn Header="Имя" MinWidth="150"/>
-                            <DataGridTextColumn Header="Адрес" MinWidth="150"/>
-                            <DataGridTextColumn Header="Описание" MinWidth="150"/>
+                            <DataGridTextColumn Header="ID" MinWidth="45" MaxWidth="80" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="Имя" MinWidth="150" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Адрес" MinWidth="150" Binding="{Binding Address}"/>
+                            <DataGridTextColumn Header="Описание" MinWidth="150" Binding="{Binding Discription}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
