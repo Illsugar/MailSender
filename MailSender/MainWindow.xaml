@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:im="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Title="Рассыльщик почты" Height="450" Width="800">
@@ -38,21 +39,9 @@
                                 <ComboBoxItem Content="Сервер 2"/>
                                 <ComboBoxItem Content="Сервер 3"/>
                             </ComboBox>
-                            <Button ToolTip="Добавить">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Height="20" Source="Media/add.png"/>
-                                </StackPanel>
-                            </Button>
-                            <Button ToolTip="Редактировать">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Height="20" Source="Media/rewrite.png"/>
-                                </StackPanel>
-                            </Button>
-                            <Button ToolTip="Удалить">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Height="20" Source="Media/delete.png"/>
-                                </StackPanel>
-                            </Button>
+                            <Button ToolTip="Добавить" im:Awesome.Content="Solid_Plus" Foreground="#FF7E98DE"/>
+                            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="#FF7E98DE"/>
+                            <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
                         </ToolBar>
                         <ToolBar Band="1" BandIndex="0">
                             <Label Content="Отправители:"/>
@@ -61,17 +50,17 @@
                                 <ComboBoxItem Content="Отправитель 2"/>
                                 <ComboBoxItem Content="Отправитель 3"/>
                             </ComboBox>
-                            <Button Content="Добавить"/>
-                            <Button Content="Редактировать"/>
-                            <Button Content="Удалить"/>
+                            <Button ToolTip="Добавить" im:Awesome.Content="Solid_Plus" Foreground="#FF7E98DE"/>
+                            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="#FF7E98DE"/>
+                            <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
                         </ToolBar>
                         <ToolBar Header="Планировщик:">
-                            <Button Content="Перейти в планировщик"/>
+                            <Button im:Awesome.Content="Regular_CalendarCheck" Foreground="#FF7E98DE"/>
                         </ToolBar>
                         <ToolBar Header="Получатели:" Band="1" BandIndex="1">
-                            <Button Content="Добавить"/>
-                            <Button Content="Редактировать"/>
-                            <Button Content="Удалить"/>
+                            <Button ToolTip="Добавить" im:Awesome.Content="Solid_Plus" Foreground="#FF7E98DE"/>
+                            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="#FF7E98DE"/>
+                            <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
                         </ToolBar>
                     </ToolBarTray>
                 </Grid>
