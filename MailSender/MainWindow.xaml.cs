@@ -29,5 +29,10 @@ namespace MailSender
         {
             Close();
         }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
