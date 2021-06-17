@@ -32,7 +32,7 @@ namespace MailSender
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Рассыльщик почты", "О программе", MessageBoxButton.OK);
         }
     }
 }
