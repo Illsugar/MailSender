@@ -34,5 +34,13 @@ namespace MailSender
         {
             MessageBox.Show("Рассыльщик почты", "О программе", MessageBoxButton.OK);
         }
+
+        private void Calendary_Click(object sender, RoutedEventArgs e)
+        {
+            tcControl.SelectedIndex = 0;
+            tcControl.SelectedItem = ti_Schedule;
+            tcControl.SelectedItem = tcControl.Items[1];
+
+        }
     }
 }

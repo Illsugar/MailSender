@@ -8,7 +8,7 @@
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:models="clr-namespace:MailSender.Models;assembly=MailSender.lib"
         mc:Ignorable="d"
-        Title="Рассыльщик почты" Height="450" Width="800">
+        Title="Рассыльщик почты" Height="500" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -26,8 +26,8 @@
                 <TextBlock Text="Статус:"/>
             </StatusBarItem>
         </StatusBar>
-        <TabControl>
-            <TabItem Header="Списки расслыки">
+        <TabControl Name="tcControl">
+            <TabItem Header="Списки расслыки" Name="ti_ListSenderLeters">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -59,7 +59,7 @@
                             <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
                         </ToolBar>
                         <ToolBar Header="Планировщик:">
-                            <Button im:Awesome.Content="Regular_CalendarCheck" Foreground="#FF7E98DE"/>
+                            <Button im:Awesome.Content="Regular_CalendarCheck" Foreground="#FF7E98DE" Click="Calendary_Click" Name="btCalendery"/>
                         </ToolBar>
                         <ToolBar Header="Получатели:" Band="1" BandIndex="1">
                             <Button ToolTip="Добавить" im:Awesome.Content="Solid_Plus" Foreground="#FF7E98DE"/>
@@ -77,7 +77,7 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Расписание">
+            <TabItem Header="Расписание" Name="ti_Schedule">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -169,7 +169,7 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Письма">
+            <TabItem Header="Письма" Name="ti_Letter">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" MinWidth="150" MaxWidth="250"/>
@@ -196,7 +196,7 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Статистика"></TabItem>
+            <TabItem Header="Статистика" Name="ti_Statistic"></TabItem>
         </TabControl>
     </DockPanel>
 </Window>
