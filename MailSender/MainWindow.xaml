@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:models="clr-namespace:MailSender.Models;assembly=MailSender.lib"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Рассыльщик почты" Height="500" Width="800">
     <DockPanel>
@@ -88,7 +89,7 @@
                             <TextBlock HorizontalAlignment="Center">Дата отправки</TextBlock>
                             <Calendar/>
                             <TextBlock HorizontalAlignment="Center">Время отправки</TextBlock>
-                            <TextBox Margin="5,5,5,0"/>
+                            <toolkit:TimePicker Margin="5,5,5,0"/>
                             <Button Margin="10,45,10,5" Height="25">
                                 <StackPanel Orientation="Horizontal">
                                     <Label im:Awesome.Content="Regular_Envelope" Height="25" Foreground="#FF66603A" HorizontalAlignment="Center" VerticalAlignment="Center" />
