@@ -5,17 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="370" Width="572">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Отправить" Margin="202,277,202,0" Height="34" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox Name="Login" Margin="126,15,0,0" HorizontalAlignment="Left" Width="209" Height="21" VerticalAlignment="Top"/>
-        <PasswordBox Name="Password" HorizontalAlignment="Left" Margin="126,41,0,0" VerticalAlignment="Top" Width="208" Height="22"/>
-        <Label Content="Имя пользователя" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Пароль" HorizontalAlignment="Left" Margin="66,37,0,0" VerticalAlignment="Top"/>
-        <Label Content="Тема письма" Margin="37,65,0,0" HorizontalAlignment="Left" Width="89" Height="27" VerticalAlignment="Top"/>
-        <TextBox x:Name="SubjectLetter" Margin="126,68,0,0" HorizontalAlignment="Left" Width="415" Height="21" VerticalAlignment="Top"/>
-        <Label Content="Текст письма" Margin="27,107,0,0" HorizontalAlignment="Left" Width="84" Height="26" VerticalAlignment="Top"/>
-        <TextBox x:Name="BodyLetter" Margin="27,138,27,0" Height="97" VerticalAlignment="Top"/>
+        <Slider VerticalContentAlignment="Top" Margin="30,10" Minimum="0" Maximum="750"
+                Name="HorizontPos"/>
+        <Slider Orientation="Vertical" HorizontalAlignment="Left" Margin="10,30" Minimum="0" Maximum="400"
+                Name="VerticalPos"/>
+        <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30" Width="50" Text="{Binding Value, ElementName=HorizontPos, StringFormat=f2}"/>
+        <TextBox HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Width="50" Text="{Binding Value, ElementName=VerticalPos, StringFormat=f2}"/>
+        
+        <Canvas Margin="30">
+            <Ellipse Width="30" Height="30" Fill="SkyBlue" Stroke="Violet" StrokeThickness="4" 
+                     Canvas.Left="{Binding Value, ElementName=HorizontPos}"
+                     Canvas.Bottom="{Binding Value, ElementName=VerticalPos}">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="{Binding ElementName=Angle, Path=Value}"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </Canvas>
     </Grid>
     <Window.Resources>
         <ResourceDictionary>
