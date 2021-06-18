@@ -89,7 +89,12 @@
                             <Calendar/>
                             <TextBlock HorizontalAlignment="Center">Время отправки</TextBlock>
                             <TextBox Margin="5,5,5,0"/>
-                            <Button Margin="10,45,10,5" Height="25" Content="Отправить сейчас"/>
+                            <Button Margin="10,45,10,5" Height="25">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label im:Awesome.Content="Regular_Envelope" Height="25" Foreground="#FF66603A" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <Label Content="Отправить сейчас" Height="25" Foreground="#FF66603A" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
                             <Button Margin="10,5,10,20" Height="25" Content="Запланировать"/>
                         </StackPanel>
                     </GroupBox>
