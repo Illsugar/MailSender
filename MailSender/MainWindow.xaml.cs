@@ -23,16 +23,6 @@ namespace MailSender
             InitializeComponent();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void About_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Рассыльщик почты", "О программе", MessageBoxButton.OK);
-        }
-
         private void Calendary_Click(object sender, RoutedEventArgs e)
         {
             tcControl.SelectedIndex = 0;
