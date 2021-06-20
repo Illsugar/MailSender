@@ -13,7 +13,7 @@ namespace MailSender.ViewModels
 
         public string Title
         {
-            get { return _Title; }
+            get => _Title;
             set
             {
                 Set(ref _Title, value);
@@ -24,7 +24,7 @@ namespace MailSender.ViewModels
 
         public string Status
         {
-            get { return _Status; }
+            get => _Status;
             set 
             {
                 Set(ref _Status, value);
