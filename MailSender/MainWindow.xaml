@@ -7,9 +7,12 @@
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:models="clr-namespace:MailSender.Models;assembly=MailSender.lib"
-        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit" 
+        xmlns:base="clr-namespace:MailSender.ViewModels.Base;assembly=MailSender.lib" 
         mc:Ignorable="d"
-        Title="Рассыльщик почты" Height="500" Width="800">
+        DataContext="{Binding MainModel, Source={StaticResource Locator}}"
+        Title="{Binding Title}" 
+        Height="500" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -24,7 +27,7 @@
                 <ResizeGrip/>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="Статус:"/>
+                <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>
         </StatusBar>
         <TabControl Name="tcControl">
