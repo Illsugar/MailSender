@@ -4,12 +4,19 @@ using System.Windows.Input;
 using MailSender.Commands;
 using MailSender.Data;
 using MailSender.Models;
+using MailSender.Servicies;
 using MailSender.ViewModels.Base;
 
 namespace MailSender.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {
+        public readonly ServersRepository _ServersRepository;
+        public MainWindowViewModel(ServersRepository ServersRepository)
+        {
+            _ServersRepository = ServersRepository;
+        }
+
         private string _Title = "Рассыльщик почты";
 
         public string Title
@@ -60,7 +67,7 @@ namespace MailSender.ViewModels
         private void OnLoadServersCommandExecuted(object p)
         {
             Servers.Clear();
-            foreach (var server in TestData.Servers)
+            foreach (var server in _ServersRepository.GetAll())
                 Servers.Add(server);
         }
     }

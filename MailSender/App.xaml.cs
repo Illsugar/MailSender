@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
 using Microsoft.Extensions.Logging;
+using MailSender.Servicies;
 
 namespace MailSender
 {
@@ -32,6 +33,7 @@ namespace MailSender
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection service)
         {
             service.AddTransient<MainWindowViewModel>();
+            service.AddSingleton<ServersRepository>();
         }
 
         protected override void OnStartup(StartupEventArgs e)
