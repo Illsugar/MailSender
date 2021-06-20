@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using MailSender.Commands;
 using MailSender.Data;
+using MailSender.Interfaces;
 using MailSender.Models;
 using MailSender.Servicies;
 using MailSender.ViewModels.Base;
@@ -12,9 +13,14 @@ namespace MailSender.ViewModels
     public class MainWindowViewModel : ViewModel
     {
         public readonly ServersRepository _ServersRepository;
-        public MainWindowViewModel(ServersRepository ServersRepository)
+        private readonly IMailService _MailService;
+        private readonly IStatistic _Statistic;
+
+        public MainWindowViewModel(ServersRepository ServersRepository, IMailService MailService, IStatistic Statistic)
         {
             _ServersRepository = ServersRepository;
+            _MailService = MailService;
+            _Statistic = Statistic;
         }
 
         private string _Title = "Рассыльщик почты";
@@ -69,6 +75,18 @@ namespace MailSender.ViewModels
             Servers.Clear();
             foreach (var server in _ServersRepository.GetAll())
                 Servers.Add(server);
+        }
+
+        private LambdaCommand _SendMessageCommand;
+
+        /// <summary>Отправка почты</summary>
+        public ICommand SendMessageCommand => _SendMessageCommand
+            ??= new(OnSendMessageCommandExecuted);
+
+        /// <summary>Логика выполнения - Отправка почты</summary>
+        private void OnSendMessageCommandExecuted(object p)
+        {
+            _MailService.SendEmail("Отправитель", "Получатель", "Тема", "Тело письма");
         }
     }
 }

@@ -94,7 +94,7 @@
                             <Calendar/>
                             <TextBlock HorizontalAlignment="Center">Время отправки</TextBlock>
                             <toolkit:TimePicker Margin="5,5,5,0"/>
-                            <Button Margin="10,45,10,5" Height="25">
+                            <Button Margin="10,45,10,5" Height="25" Command="{Binding SendMessageCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <Label im:Awesome.Content="Regular_Envelope" Height="25" Foreground="#FF66603A" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     <Label Content="Отправить сейчас" Height="25" Foreground="#FF66603A" VerticalAlignment="Center" />
