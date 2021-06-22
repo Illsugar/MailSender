@@ -96,11 +96,11 @@
                             <toolkit:TimePicker Margin="5,5,5,0"/>
                             <Button Margin="10,45,10,5" Height="25" Command="{Binding SendMessageCommand}">
                                 <StackPanel Orientation="Horizontal">
-                                    <Label im:Awesome.Content="Regular_Envelope" Height="25" Foreground="#FF66603A" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                    <Label Content="Отправить сейчас" Height="25" Foreground="#FF66603A" VerticalAlignment="Center" />
+                                    <Label im:Awesome.Content="Regular_Envelope" Height="25" Foreground="#FF7E98DE" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <Label Content="Отправить сейчас" Height="25" Foreground="#FF7E98DE" VerticalAlignment="Center" />
                                 </StackPanel>
                             </Button>
-                            <Button Margin="10,5,10,20" Height="25" Content="Запланировать"/>
+                            <Button Margin="10,5,10,20" Height="25" Content="Запланировать" Foreground="#FF7E98DE"/>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Задания"  Grid.Column="1">

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MailSender.Models
 {
-    public class Sender : Entity
+    public class Recipient : Entity
     {
         public string Name { get; set; }
         public string Address { get; set; }
