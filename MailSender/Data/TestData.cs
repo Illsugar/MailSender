@@ -23,7 +23,7 @@ namespace MailSender.Data
         public static List<Sender> Senders { get; } = Enumerable.Range(1, 10)
             .Select(i => new Sender
             {
-                ID = i,
+                //ID = i,
                 Name = $"Отправитель - {i}",
                 Address = $"sender-{i}.server.ru",
                 Discription = $"Описание отправителя{i}"
@@ -33,7 +33,7 @@ namespace MailSender.Data
         public static List<Recipient> Recipients { get; } = Enumerable.Range(1, 10)
             .Select(i => new Recipient
             {
-                ID = i,
+                //ID = i,
                 Name = $"Получатель - {i}",
                 Address = $"recipient-{i}.server.ru",
                 Discription = $"Описание получателя {i}"

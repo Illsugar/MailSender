@@ -12,13 +12,20 @@ namespace MailSender.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {
-        public readonly ServersRepository _ServersRepository;
+        private readonly IRepository<Server> _ServersRepository;
+        private readonly IRepository<Sender> _SendersRepository;
+        private readonly IRepository<Recipient> _RecipientsRepository;
+        private readonly IRepository<Letter> _LettersRepository;
         private readonly IMailService _MailService;
         private readonly IStatistic _Statistic;
 
-        public MainWindowViewModel(ServersRepository ServersRepository, IMailService MailService, IStatistic Statistic)
+        public MainWindowViewModel(IRepository<Server> ServersRepository, IRepository<Sender> SendersRepository, IRepository<Recipient> RecipientsRepository,
+            IRepository<Letter> LettersRepository, IMailService MailService, IStatistic Statistic)
         {
             _ServersRepository = ServersRepository;
+            _SendersRepository = SendersRepository;
+            _RecipientsRepository = RecipientsRepository;
+            _LettersRepository = LettersRepository;
             _MailService = MailService;
             _Statistic = Statistic;
         }
