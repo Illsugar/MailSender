@@ -37,8 +37,8 @@ namespace MailSender
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection service)
         {
             service.AddTransient<MainWindowViewModel>();
-            service.AddSingleton<ServersRepository>();
-            //service.AddSingleton<IStatistic, InMemoryStatisticService>();
+            //service.AddSingleton<ServersRepository>();
+            service.AddSingleton<IStatistic, InMemoryStatisticService>();
             service.AddSingleton<IMailService, DebugMailService>();
             service.AddSingleton<IRepository<Server>, InMemoryServersRepository>();
             service.AddSingleton<IRepository<Sender>, InMemorySenderRepository>();

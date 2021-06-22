@@ -69,19 +69,32 @@ namespace MailSender.ViewModels
         }
 
         public ObservableCollection<Server> Servers { get; } = new ObservableCollection<Server>();
+        public ObservableCollection<Sender> Senders { get; } = new ObservableCollection<Sender>();
+        public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
+        public ObservableCollection<Letter> Letters { get; } = new ObservableCollection<Letter>();
 
-        private LambdaCommand _LoadServersCommand;
+
+        private LambdaCommand _LoadDataCommand;
 
         /// <summary>Загрузка серверов</summary>
-        public ICommand LoadServersCommand => _LoadServersCommand
-            ??= new(OnLoadServersCommandExecuted);
+        public ICommand LoadDataCommand => _LoadDataCommand
+            ??= new(OnLoadDataCommandExecuted);
 
         /// <summary>Логика выполнения - Загрузка серверов</summary>
-        private void OnLoadServersCommandExecuted(object p)
+        private void OnLoadDataCommandExecuted(object p)
         {
             Servers.Clear();
-            foreach (var server in _ServersRepository.GetAll())
-                Servers.Add(server);
+            Senders.Clear();
+            Recipients.Clear();
+            Letters.Clear();
+            foreach (var item in _ServersRepository.GetAll())
+                Servers.Add(item);
+            foreach (var item in _SendersRepository.GetAll())
+                Senders.Add(item);
+            foreach (var item in _RecipientsRepository.GetAll())
+                Recipients.Add(item);
+            foreach (var item in _LettersRepository.GetAll())
+                Letters.Add(item);
         }
 
         private LambdaCommand _SendMessageCommand;
