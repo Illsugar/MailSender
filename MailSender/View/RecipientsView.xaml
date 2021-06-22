@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:v="clr-namespace:MailSender.View" 
              xmlns:viewmodels="clr-namespace:MailSender.ViewModels" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+             DataContext="{Binding MainModel, Source={StaticResource Locator}}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel Margin="3">
