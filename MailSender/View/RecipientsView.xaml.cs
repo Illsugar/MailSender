@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MailSender.Views
+namespace MailSender.View
 {
     /// <summary>
     /// Логика взаимодействия для RecipientsView.xaml

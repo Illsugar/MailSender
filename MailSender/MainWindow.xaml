@@ -9,6 +9,7 @@
         xmlns:models="clr-namespace:MailSender.Models;assembly=MailSender.lib"
         xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit" 
         xmlns:base="clr-namespace:MailSender.ViewModels.Base;assembly=MailSender.lib" 
+        xmlns:v="clr-namespace:MailSender.View"
         mc:Ignorable="d"
         DataContext="{Binding MainModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" 
@@ -74,14 +75,9 @@
                             <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
                         </ToolBar>
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding Recipients}" VerticalGridLinesBrush="#FFE0E3BC" HorizontalGridLinesBrush="#FFE0E3BC" CanUserAddRows="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" MinWidth="45" MaxWidth="80" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="Имя" MinWidth="150" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Адрес" MinWidth="150" Binding="{Binding Address}"/>
-                            <DataGridTextColumn Header="Описание" MinWidth="150" Binding="{Binding Discription}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Grid Grid.Row="1">
+                        <v:RecipientsView/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Расписание" Name="ti_Schedule">
