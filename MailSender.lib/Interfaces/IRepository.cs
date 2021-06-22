@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MailSender.Interfaces
 {
-    interface IRepository <T> where T : Entity
+    public interface IRepository <T> where T : Entity
     {
         IEnumerable<T> GetAll();
 
