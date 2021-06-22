@@ -15,24 +15,12 @@ using System.Windows.Shapes;
 
 namespace MailSender
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void About_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Рассыльщик почты", "О программе", MessageBoxButton.OK);
         }
 
         private void Calendary_Click(object sender, RoutedEventArgs e)

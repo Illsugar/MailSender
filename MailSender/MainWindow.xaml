@@ -7,16 +7,19 @@
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:models="clr-namespace:MailSender.Models;assembly=MailSender.lib"
-        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit" 
+        xmlns:base="clr-namespace:MailSender.ViewModels.Base;assembly=MailSender.lib" 
         mc:Ignorable="d"
-        Title="Рассыльщик почты" Height="500" Width="800">
+        DataContext="{Binding MainModel, Source={StaticResource Locator}}"
+        Title="{Binding Title}" 
+        Height="500" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
-                <MenuItem Header="Выход" Click="Exit_Click"/>
+                <MenuItem Header="Выход" Command="{Binding ExitCommand}"/>
             </MenuItem>
             <MenuItem Header="Справка">
-                <MenuItem Header="О программе" Click="About_Click"/>
+                <MenuItem Header="О программе" Command="{Binding AboutCommad}"/>
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
@@ -24,7 +27,7 @@
                 <ResizeGrip/>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="Статус:"/>
+                <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>
         </StatusBar>
         <TabControl Name="tcControl">
@@ -37,8 +40,9 @@
                     <ToolBarTray Grid.Row="0">
                         <ToolBar>
                             <Label Content="Сервера:" Margin="0,0,25,0"/>
-                            <ComboBox Width="100" SelectedIndex="0" Name="ServersList" ItemsSource="{x:Static data:TestData.Servers}" DisplayMemberPath="Name">
+                            <ComboBox Width="100" SelectedIndex="0" ItemsSource="{Binding Servers}" DisplayMemberPath="Name">
                             </ComboBox>
+                            <Button ToolTip="Загрузить" im:Awesome.Content="Solid_Download" Command="{Binding LoadServersCommand}" Foreground="#FF7E98DE"/>
                             <Button ToolTip="Добавить" im:Awesome.Content="Solid_Plus" Foreground="#FF7E98DE"/>
                             <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="#FF7E98DE"/>
                             <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
@@ -90,7 +94,7 @@
                             <Calendar/>
                             <TextBlock HorizontalAlignment="Center">Время отправки</TextBlock>
                             <toolkit:TimePicker Margin="5,5,5,0"/>
-                            <Button Margin="10,45,10,5" Height="25">
+                            <Button Margin="10,45,10,5" Height="25" Command="{Binding SendMessageCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <Label im:Awesome.Content="Regular_Envelope" Height="25" Foreground="#FF66603A" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                     <Label Content="Отправить сейчас" Height="25" Foreground="#FF66603A" VerticalAlignment="Center" />

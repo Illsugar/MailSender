@@ -11,36 +11,31 @@ namespace TestWpf
 {
     public class WpfTestSender
     {
-        public static void TestSender(string login, System.Security.SecureString pass, string subject, string body)
-        {
+        //public static void TestSender(string login, System.Security.SecureString pass, string subject, string body)
+        //{
             
-            using var massege = new MailMessage(WpfTestSrc.FromLetter, WpfTestSrc.ToLetter); //сообщение от кого и кому
-            massege.Subject = subject;
-            massege.Body = body + "\nДата и время отправки: " + DateTime.Now.ToString("dd.mm.yy hh:mm");
+        //    using var massege = new MailMessage(WpfTestSrc.FromLetter, WpfTestSrc.ToLetter); //сообщение от кого и кому
+        //    massege.Subject = subject;
+        //    massege.Body = body + "\nДата и время отправки: " + DateTime.Now.ToString("dd.mm.yy hh:mm");
 
-            //порты для ьфшд 25, 587 или 2525
-            using var client = new SmtpClient(WpfTestSrc.SmtpAdress, WpfTestSrc.Host); //для клиента указываем адрес сервера и порт
+        //    //порты для ьфшд 25, 587 или 2525
+        //    using var client = new SmtpClient(WpfTestSrc.SmtpAdress, WpfTestSrc.Host); //для клиента указываем адрес сервера и порт
 
-            client.EnableSsl = true;
-            client.Credentials = new NetworkCredential
-            {
-                UserName = login, //= Login.Text,
-                SecurePassword = pass //= Password.SecurePassword
-            };
+        //    client.EnableSsl = true;
+        //    client.Credentials = new NetworkCredential
+        //    {
+        //        UserName = login, //= Login.Text,
+        //        SecurePassword = pass //= Password.SecurePassword
+        //    };
 
-            try
-            {
-                client.Send(massege);
-                SendSuccessWindow success = new SendSuccessWindow();
-                success.Show();
-                //MessageBox.Show("Почта успешно отправлена", "Сообщение об отправке", MessageBoxButton.OK);
-            }
-            catch (SmtpException)
-            {
-                SendErrorWindow error = new SendErrorWindow();
-                error.Show();
-                //MessageBox.Show("Что-то введено неверно:(\nПожалуйста, попробуйте снова", "Ошибка отправки!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        //    try
+        //    {
+        //        MessageBox.Show("Почта успешно отправлена", "Сообщение об отправке", MessageBoxButton.OK);
+        //    }
+        //    catch (SmtpException)
+        //    {
+        //        MessageBox.Show("Что-то введено неверно:(\nПожалуйста, попробуйте снова", "Ошибка отправки!", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
     }
 }
