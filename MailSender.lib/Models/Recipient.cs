@@ -9,6 +9,15 @@ namespace MailSender.Models
 {
     public class Recipient : Person
     {
-       
+        public override string Name 
+        { 
+            get => base.Name;
+            set 
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("Задана пустая строка имени", nameof(value));
+                base.Name = value;
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace MailSender.Models.Base
 {
     public class Person : Entity
     {
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         public string Address { get; set; }
         public string Discription { get; set; }
     }

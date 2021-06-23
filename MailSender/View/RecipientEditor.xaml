@@ -22,7 +22,8 @@
         <TextBox Grid.Row="0" Grid.Column="1" Margin="5,0,0,3" Text="{Binding SelectedRecipient.Id, NotifyOnValidationError=True}"
                  Validation.Error="OnIdValidationError"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Имя:" HorizontalAlignment="Right"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0,0,3" Text="{Binding SelectedRecipient.Name}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0,0,3" Text="{Binding SelectedRecipient.Name, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}"
+                 Validation.Error="OnIdValidationError"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Адрес:" HorizontalAlignment="Right"/>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="5,0,0,3" Text="{Binding SelectedRecipient.Address}"/>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Описание:" HorizontalAlignment="Right"/>
