@@ -65,7 +65,7 @@ namespace MailSender.ViewModels
 
         private void OnAboutExecute(object Obj)
         {
-            MessageBox.Show("Рассыльщик почты", "О прграмме");
+            MessageBox.Show("Рассыльщик почты", "О программе");
         }
 
         public ObservableCollection<Server> Servers { get; } = new ObservableCollection<Server>();
@@ -99,14 +99,19 @@ namespace MailSender.ViewModels
 
         private LambdaCommand _SendMessageCommand;
 
-        /// <summary>Отправка почты</summary>
+        //Отправка почты
         public ICommand SendMessageCommand => _SendMessageCommand
             ??= new(OnSendMessageCommandExecuted);
 
-        /// <summary>Логика выполнения - Отправка почты</summary>
+        //Логика выполнения - Отправка почты
         private void OnSendMessageCommandExecuted(object p)
         {
             _MailService.SendEmail("Отправитель", "Получатель", "Тема", "Тело письма");
         }
+
+        private Recipient _SelectedRecipient;
+
+        //Выбранный получатель
+        public Recipient SelectedRecipient { get => _SelectedRecipient; set => Set(ref _SelectedRecipient, value); }
     }
 }

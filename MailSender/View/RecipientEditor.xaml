@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="MailSender.View.RecipientEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MailSender.View"
+             
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5,0,0,3" Text="{Binding SelectedRecipient.Id}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Имя:" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0,0,3" Text="{Binding SelectedRecipient.Name}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Адрес:" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5,0,0,3" Text="{Binding SelectedRecipient.Address}"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Описание:" HorizontalAlignment="Right"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5,0,0,3" Text="{Binding SelectedRecipient.Discription}"/>
+    </Grid>
+</UserControl>
