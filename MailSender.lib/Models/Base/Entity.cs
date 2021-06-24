@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MailSender
+namespace MailSender.Models.Base
 {
-    public class MailSchedulerService
+    public abstract class Entity
     {
+        public int Id { get; set; }
     }
 }

@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using MailSender.Servicies;
 using MailSender.Interfaces;
 using MailSender.Services;
+using MailSender.Models;
+using MailSender.Servicies.InMemory;
 
 namespace MailSender
 {
@@ -35,9 +37,13 @@ namespace MailSender
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection service)
         {
             service.AddTransient<MainWindowViewModel>();
-            service.AddSingleton<ServersRepository>();
+            //service.AddSingleton<ServersRepository>();
             service.AddSingleton<IStatistic, InMemoryStatisticService>();
             service.AddSingleton<IMailService, DebugMailService>();
+            service.AddSingleton<IRepository<Server>, InMemoryServersRepository>();
+            service.AddSingleton<IRepository<Sender>, InMemorySenderRepository>();
+            service.AddSingleton<IRepository<Recipient>, InMemoryRecipientRepository>();
+            service.AddSingleton<IRepository<Letter>, InMemoryLetterRepository>();
         }
 
         protected override void OnStartup(StartupEventArgs e)
