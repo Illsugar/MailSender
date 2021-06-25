@@ -18,9 +18,10 @@ namespace MailSender.ViewModels
         private readonly IRepository<Letter> _LettersRepository;
         private readonly IMailService _MailService;
         private readonly IStatistic _Statistic;
+        private readonly IUserDialog _UserDialog;
 
         public MainWindowViewModel(IRepository<Server> ServersRepository, IRepository<Sender> SendersRepository, IRepository<Recipient> RecipientsRepository,
-            IRepository<Letter> LettersRepository, IMailService MailService, IStatistic Statistic)
+            IRepository<Letter> LettersRepository, IMailService MailService, IStatistic Statistic, IUserDialog UserDialog)
         {
             _ServersRepository = ServersRepository;
             _SendersRepository = SendersRepository;
@@ -28,6 +29,8 @@ namespace MailSender.ViewModels
             _LettersRepository = LettersRepository;
             _MailService = MailService;
             _Statistic = Statistic;
+            _UserDialog = UserDialog;
+
         }
 
         private string _Title = "Рассыльщик почты";
@@ -109,9 +112,29 @@ namespace MailSender.ViewModels
             _MailService.SendEmail("Отправитель", "Получатель", "Тема", "Тело письма");
         }
 
+        //Выбранный получатель
         private Recipient _SelectedRecipient;
 
-        //Выбранный получатель
         public Recipient SelectedRecipient { get => _SelectedRecipient; set => Set(ref _SelectedRecipient, value); }
+
+
+        //Редактирование сервиса
+        private LambdaCommand _EditServerCommand;
+
+        public ICommand EditServerCommand => _EditServerCommand
+            ??= new(OnEditServerCommandExecuted, p => p is Server);
+
+        private void OnEditServerCommandExecuted(object p)
+        {
+            if (p is not Server server) return;
+            if (_UserDialog.EditServer(server))
+                _ServersRepository.Update(server);
+        }
+
+        //Выбранный сервер
+        private Server _SelectedServer;
+
+        public Server SelectedServer { get => _SelectedServer; set => Set(ref _SelectedServer, value); }
+
     }
 }

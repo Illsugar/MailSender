@@ -44,10 +44,10 @@
                     <ToolBarTray Grid.Row="0">
                         <ToolBar>
                             <Label Content="Сервера:" Margin="0,0,25,0"/>
-                            <ComboBox Width="100" SelectedIndex="0" ItemsSource="{Binding Servers}" DisplayMemberPath="Name">
+                            <ComboBox Width="100" SelectedIndex="0" ItemsSource="{Binding Servers}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedServer}">
                             </ComboBox>
                             <Button ToolTip="Добавить" im:Awesome.Content="Solid_Plus" Foreground="#FF7E98DE"/>
-                            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="#FF7E98DE"/>
+                            <Button ToolTip="Редактировать" Command="{Binding EditServerCommand}" CommandParameter="{Binding SelectedServer}" im:Awesome.Content="Solid_Edit" Foreground="#FF7E98DE"/>
                             <Button ToolTip="Удалить" im:Awesome.Content="Solid_Trash" Foreground="#FF7E98DE"/>
                         </ToolBar>
                         <ToolBar Band="1" BandIndex="0">
