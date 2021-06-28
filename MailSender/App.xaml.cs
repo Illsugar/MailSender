@@ -45,6 +45,7 @@ namespace MailSender
             service.AddSingleton<IRepository<Recipient>, InMemoryRecipientRepository>();
             service.AddSingleton<IRepository<Letter>, InMemoryLetterRepository>();
             service.AddSingleton<IUserDialog, WindowUserDialog>();
+           // service.AddSingleton<IMailService, SmtpMailService>();
         }
 
         protected override void OnStartup(StartupEventArgs e)

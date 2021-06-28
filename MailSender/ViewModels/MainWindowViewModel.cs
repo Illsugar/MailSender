@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using MailSender.Commands;
@@ -90,14 +91,17 @@ namespace MailSender.ViewModels
             Senders.Clear();
             Recipients.Clear();
             Letters.Clear();
-            foreach (var item in _ServersRepository.GetAll())
-                Servers.Add(item);
-            foreach (var item in _SendersRepository.GetAll())
-                Senders.Add(item);
-            foreach (var item in _RecipientsRepository.GetAll())
-                Recipients.Add(item);
-            foreach (var item in _LettersRepository.GetAll())
-                Letters.Add(item);
+            foreach (var item in _ServersRepository.GetAll()) Servers.Add(item);
+            SelectedServer = Servers.FirstOrDefault();
+
+            foreach (var item in _RecipientsRepository.GetAll()) Recipients.Add(item);
+            SelectedRecipient = Recipients.FirstOrDefault();
+
+            foreach (var item in _SendersRepository.GetAll()) Senders.Add(item);
+            SelectedSender = Senders.FirstOrDefault();
+
+            foreach (var item in _LettersRepository.GetAll()) Letters.Add(item);
+            SelectedLetter = Letters.FirstOrDefault();
         }
 
         private LambdaCommand _SendMessageCommand;
@@ -109,7 +113,16 @@ namespace MailSender.ViewModels
         //Логика выполнения - Отправка почты
         private void OnSendMessageCommandExecuted(object p)
         {
-            _MailService.SendEmail("Отправитель", "Получатель", "Тема", "Тело письма");
+            var server = SelectedServer;
+
+            //_MailService.SendEmail("Отправитель", "Получатель", "Тема", "Тело письма");
+            var mail_sender = _MailService.GetSender(server.Address, server.Port, server.UseSSL, server.Login, server.Password);
+
+            var sender = SelectedSender;
+            var recipient = SelectedRecipient;
+            var letter = SelectedLetter;
+
+            mail_sender.Send(sender.Address, recipient.Address, letter.Title, letter.Body);
         }
 
         //Выбранный получатель
@@ -136,5 +149,14 @@ namespace MailSender.ViewModels
 
         public Server SelectedServer { get => _SelectedServer; set => Set(ref _SelectedServer, value); }
 
+        //Выбранное сообщение
+        private Letter _SelectedLetter;
+        
+        public Letter SelectedLetter { get => _SelectedLetter; set => Set(ref _SelectedLetter, value); }
+
+        //Выбранный отправитель
+        private Sender _SelectedSender;
+
+        public Sender SelectedSender { get => _SelectedSender; set => Set(ref _SelectedSender, value); }
     }
 }

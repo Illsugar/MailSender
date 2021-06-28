@@ -52,7 +52,7 @@
                         </ToolBar>
                         <ToolBar Band="1" BandIndex="0">
                             <Label Content="Отправители:"/>
-                            <ComboBox Width="100" SelectedIndex="0" Name="SenderList" ItemsSource="{Binding Senders}">
+                            <ComboBox Width="100" SelectedIndex="0" Name="SenderList" ItemsSource="{Binding Senders}" SelectedItem="{Binding SelectedSender}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="{x:Type models:Sender}">
                                         <StackPanel Orientation="Horizontal" >
@@ -189,7 +189,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <GroupBox Grid.Column="0" Header="Письма">
-                        <ListBox ItemsSource="{Binding Letters}" Name="LetterList">
+                        <ListBox ItemsSource="{Binding Letters}" SelectedItem="{Binding SelectedLetter}" Name="LetterList">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Title}" ToolTip="{Binding Body}"/>
