@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using MailSender.Commands;
@@ -18,9 +19,10 @@ namespace MailSender.ViewModels
         private readonly IRepository<Letter> _LettersRepository;
         private readonly IMailService _MailService;
         private readonly IStatistic _Statistic;
+        private readonly IUserDialog _UserDialog;
 
         public MainWindowViewModel(IRepository<Server> ServersRepository, IRepository<Sender> SendersRepository, IRepository<Recipient> RecipientsRepository,
-            IRepository<Letter> LettersRepository, IMailService MailService, IStatistic Statistic)
+            IRepository<Letter> LettersRepository, IMailService MailService, IStatistic Statistic, IUserDialog UserDialog)
         {
             _ServersRepository = ServersRepository;
             _SendersRepository = SendersRepository;
@@ -28,6 +30,8 @@ namespace MailSender.ViewModels
             _LettersRepository = LettersRepository;
             _MailService = MailService;
             _Statistic = Statistic;
+            _UserDialog = UserDialog;
+
         }
 
         private string _Title = "Рассыльщик почты";
@@ -87,14 +91,17 @@ namespace MailSender.ViewModels
             Senders.Clear();
             Recipients.Clear();
             Letters.Clear();
-            foreach (var item in _ServersRepository.GetAll())
-                Servers.Add(item);
-            foreach (var item in _SendersRepository.GetAll())
-                Senders.Add(item);
-            foreach (var item in _RecipientsRepository.GetAll())
-                Recipients.Add(item);
-            foreach (var item in _LettersRepository.GetAll())
-                Letters.Add(item);
+            foreach (var item in _ServersRepository.GetAll()) Servers.Add(item);
+            SelectedServer = Servers.FirstOrDefault();
+
+            foreach (var item in _RecipientsRepository.GetAll()) Recipients.Add(item);
+            SelectedRecipient = Recipients.FirstOrDefault();
+
+            foreach (var item in _SendersRepository.GetAll()) Senders.Add(item);
+            SelectedSender = Senders.FirstOrDefault();
+
+            foreach (var item in _LettersRepository.GetAll()) Letters.Add(item);
+            SelectedLetter = Letters.FirstOrDefault();
         }
 
         private LambdaCommand _SendMessageCommand;
@@ -106,12 +113,50 @@ namespace MailSender.ViewModels
         //Логика выполнения - Отправка почты
         private void OnSendMessageCommandExecuted(object p)
         {
-            _MailService.SendEmail("Отправитель", "Получатель", "Тема", "Тело письма");
+            var server = SelectedServer;
+
+            //_MailService.SendEmail("Отправитель", "Получатель", "Тема", "Тело письма");
+            var mail_sender = _MailService.GetSender(server.Address, server.Port, server.UseSSL, server.Login, server.Password);
+
+            var sender = SelectedSender;
+            var recipient = SelectedRecipient;
+            var letter = SelectedLetter;
+
+            mail_sender.Send(sender.Address, recipient.Address, letter.Title, letter.Body);
         }
 
+        //Выбранный получатель
         private Recipient _SelectedRecipient;
 
-        //Выбранный получатель
         public Recipient SelectedRecipient { get => _SelectedRecipient; set => Set(ref _SelectedRecipient, value); }
+
+
+        //Редактирование сервиса
+        private LambdaCommand _EditServerCommand;
+
+        public ICommand EditServerCommand => _EditServerCommand
+            ??= new(OnEditServerCommandExecuted, p => p is Server);
+
+        private void OnEditServerCommandExecuted(object p)
+        {
+            if (p is not Server server) return;
+            if (_UserDialog.EditServer(server))
+                _ServersRepository.Update(server);
+        }
+
+        //Выбранный сервер
+        private Server _SelectedServer;
+
+        public Server SelectedServer { get => _SelectedServer; set => Set(ref _SelectedServer, value); }
+
+        //Выбранное сообщение
+        private Letter _SelectedLetter;
+        
+        public Letter SelectedLetter { get => _SelectedLetter; set => Set(ref _SelectedLetter, value); }
+
+        //Выбранный отправитель
+        private Sender _SelectedSender;
+
+        public Sender SelectedSender { get => _SelectedSender; set => Set(ref _SelectedSender, value); }
     }
 }
