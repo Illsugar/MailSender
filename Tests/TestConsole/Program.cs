@@ -11,7 +11,8 @@ namespace TestConsole
         {
             //ThreadsIntro.Run();
             //CriticalSection.Run();
-            ThreadSynchronization.Run();
+            //ThreadSynchronization.Run();
+            Intro.Run();
 
 
             Console.WriteLine("Работа завершена. Нажмите Enter для выхода");

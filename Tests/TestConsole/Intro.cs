@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestConsole
 {
-    class Intro
+    public class Intro
     {
         public static void Run()
         {
@@ -27,6 +27,10 @@ namespace TestConsole
             var calculation = new CalculationSumTask(5000);
             calculation.Start();
 
+            var calculFact = new CalculationFactorialTask(6);
+            calculFact.Start();
+            
+
             //printer1_thread.Start();
             //printer1_thread.Join();
 
@@ -34,6 +38,7 @@ namespace TestConsole
             //printer3_thread.Start(message3);
 
             Console.WriteLine("Сумма чисел от 1 до 5000 = " + calculation.Result);
+            Console.WriteLine("Факториал числа 6 = " + calculFact.Result) ;
         }
 
         private static void TimeThreadMethod()
