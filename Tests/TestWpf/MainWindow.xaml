@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
-
+        <ProgressBar DockPanel.Dock="Top" Name="Progress" Maximum="100" Value="50"
+                     Margin="20" Height="15"/>
+        <TextBlock DockPanel.Dock="Top" Name="Result" Text="Empty" 
+                   HorizontalAlignment="Center" Margin="20"
+                   FontWeight="Bold" FontSize="30"/>
+        <UniformGrid Rows="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="Start"  Margin="3"
+                    Padding="30,0" Click="Start_OnClick"/>
+            <Button Content="Cancel" Margin="3" Name="CancelButton" IsEnabled="False"
+                    Padding="30,0" Click="Cancel_OnClick"/>
+        </UniformGrid>
     </DockPanel>
 </Window>
