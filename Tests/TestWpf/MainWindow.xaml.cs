@@ -12,15 +12,5 @@ namespace TestWpf
         {
             InitializeComponent();
         }
-
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    string login = Login.Text;
-        //    var pass = Password.SecurePassword;
-        //    string subject = SubjectLetter.Text;
-        //    string body = BodyLetter.Text;
-
-        //    WpfTestSender.TestSender(login, pass, subject, body);
-        //}
     }
 }
